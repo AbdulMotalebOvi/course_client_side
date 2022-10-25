@@ -7,13 +7,16 @@ import './Main.css'
 const Main = () => {
     return (
         <div>
-            <AppBar></AppBar>
-            <div className='divided max-w-screen-xl	 mx-auto'>
-                <div>
-                    <Categories></Categories>
+            <AppBar>
+                <div className='divided max-w-screen-xl	mx-auto'>
+                    <div>
+                        <Categories></Categories>
+                    </div>
+                    <div>
+                        <Outlet></Outlet>
+                    </div>
                 </div>
-                <Outlet></Outlet>
-            </div>
+            </AppBar>
         </div>
     );
 };

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
 import Category from '../../Pages/Category/Category';
 
 const Categories = () => {
@@ -13,7 +12,7 @@ const Categories = () => {
     return (
         <div className='text-[18px] font-semibold'>
             <h1>All Categories : {category.length}</h1>
-            <div>
+            <div className='shadow'>
                 {
                     category?.map(ct => <Category
                         key={ct.id}
