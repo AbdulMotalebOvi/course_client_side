@@ -13,24 +13,45 @@ const AppBar = ({ children }) => {
             .catch(err => console.log(err))
     }
     return (
-        <div data-theme={dark ? 'dark' : 'light'} className=' bg-base-100'>
-            <div className="navbar  max-w-screen-xl	mx-auto">
+        <div data-theme={dark ? 'dark' : 'light'} >
+            <div className="navbar bg-base-100 max-w-screen-xl	mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><Link>Course</Link></li>
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
+
+                            <li><Link to="/">Course</Link></li>
                             <li><Link>FAQ</Link></li>
                             <li><Link>Blog</Link></li>
+                            <li><div className='block  '>
+                                {
+                                    user?.uid ?
+                                        <>
+                                            <span>{user?.email}</span>
+                                            <button className='btn btn-sm btn-primary text-white mx-2' onClick={handlerToLogOut}>
+                                                <Link to='/login' >Sign Out</Link>
+                                            </button>
+                                        </>
+                                        :
+                                        <div className='flex sm:flex flex-col text-left'>
+                                            <button className='mb-2 px-2 py-2 ml-4 rounded btn-primary text-white'>
+                                                <Link to='/login'>Log In</Link></button>
+
+                                            <button className=' px-2 py-2 ml-4 rounded btn-primary text-white'><Link to='/signup'>Register</Link></button>
+
+                                        </div>
+                                }
+                            </div></li>
                         </ul>
                     </div>
                     <Link to='/' className="btn btn-ghost normal-case text-xl">Online Course</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0 uppercase">
-                        <li><Link to='/'>Course</Link></li>
+
+                        <li><Link to="/">Course</Link></li>
                         <li><Link>FAQ</Link></li>
                         <li><Link>Blog</Link></li>
 
@@ -38,35 +59,37 @@ const AppBar = ({ children }) => {
                 </div>
 
                 <div className="navbar-end">
-                    <>
-                        <Link to='/profile' className='mr-3'>
-                            <div>
-                                {
-                                    user?.photoURL ?
-                                        <img src={user?.photoURL} alt="" />
+                    <Link to='/profile' className='mr-3'>
 
-                                        :
-                                        <UserCircleIcon className="h-8 w-8 text-slate-500" />
-                                }
-                            </div>
-                        </Link>
-                    </>
-                    <div>
+                        {
+                            user?.photoURL ?
+                                <img src={user?.photoURL} alt=""
+                                    style={{ width: '40px', height: '40px', borderRadius: '20px' }}
+                                />
+
+                                :
+                                <UserCircleIcon className="h-8 w-8 text-slate-500" />
+                        }
+
+                    </Link>
+
+                    <div className='hidden lg:block md:block '>
                         {
                             user?.uid ?
                                 <>
-                                    <span><Link>{user?.email}</Link></span>
-                                    <button className='btn btn-sm bg-blue-500' onClick={handlerToLogOut}>
+                                    <span>{user?.email}</span>
+                                    <button className='btn btn-sm btn-primary text-white mx-2' onClick={handlerToLogOut}>
                                         <Link to='/login' >Sign Out</Link>
                                     </button>
                                 </>
                                 :
-                                <>
-                                    <button className=' px-2 py-2 rounded btn-primary text-white'><Link to='/login '>Log In</Link></button>
+                                <div className='flex sm:flex'>
+                                    <button className='px-0 py-0 sm:px-2 sm:py-2 rounded btn-primary text-white text-[13px] sm:text-[17px]'>
+                                        <Link to='/login'>Log In</Link></button>
 
                                     <button className=' px-2 py-2 ml-4 rounded btn-primary text-white'><Link to='/signup'>Register</Link></button>
 
-                                </>
+                                </div>
                         }
                     </div>
 

@@ -15,6 +15,28 @@ const Courses = () => {
         slidesToShow: 3,
         slidesToScroll: 2,
         pauseOnHover: true,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 426,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: false,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    centerMode: false,
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: { slidesToShow: 3, slidesToScroll: 3, infinite: false }
+            }
+        ],
+
         appendDots: dots => (
             <div
             >
@@ -33,7 +55,7 @@ const Courses = () => {
             >
                 {i + 1}
             </div>
-        )
+        ),
 
     }
     return (

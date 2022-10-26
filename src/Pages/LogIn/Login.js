@@ -1,23 +1,41 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../Shared/Contexts/UserContext';
+import toast from 'react-hot-toast';
 
 const Login = () => {
-    const [pass, setPassword] = useState('')
-    const { user, signIn } = useContext(AuthContext)
+    const [passErr, setPasswordErr] = useState('')
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
+    const { signIn, createUserByGoogle, createUserGithub, setLoading } = useContext(AuthContext)
     const handlerToSIgnIn = (event) => {
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value
         signIn(email, password)
-            .then(result => {
-                const user = result.user
-                console.log(user)
+            .then((res) => {
+                const user = res.user
+                form.reset()
+                if (user.emailVerified) {
+                    navigate(from, { replace: true })
+
+                } else {
+                    toast.error('Your email is not verified,PLease verify your email')
+                }
+                setPasswordErr('')
             })
-            .catch(err => console.log(err))
+            .catch((err) => {
+                setPasswordErr(err.message)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+
     }
     return (
         <div>
@@ -96,16 +114,21 @@ const Login = () => {
                             </div>
                         </div>
 
-                        <button
-                            type="submit"
-                            className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
-                        >
-                            <Link to='/'>  Sign in</Link>
-                        </button>
+
+                        <button className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">  Sign in</button>
+                        <p className='font-semibold text-red-500 text-[15px]'>{passErr}</p>
+
+                        <div>
+
+                            <Link onClick={createUserByGoogle} className=" w-full rounded-lg  py-3 font-medium uppercase btn btn-outline btn-primary text-2xl text-black" to='/'><FaGoogle /></Link>
+                        </div>
+                        <div>
+                            <Link onClick={createUserGithub} className=" w-full rounded-lg  py-3 text-2xl  font-medium text-black uppercase btn btn-outline btn-primary" to='/' ><FaGithub /></Link>
+                        </div>
 
                         <p className="text-center text-sm text-gray-500">
                             No account?
-                            <Link className="underline" to="">Sign up</Link>
+                            <Link className="underline text-blue-500 font-semibold" to="/signup">Sign up</Link>
                         </p>
                     </form>
                 </div>

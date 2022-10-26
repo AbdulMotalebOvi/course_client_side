@@ -9,7 +9,7 @@ const Checkout = () => {
                 course.map(cr => {
                     return (
 
-                        <div className="relative mx-auto max-w-screen-2xl">
+                        <div className="relative mx-auto max-w-screen-2xl shadow">
                             <div className="bg-gray-50 py-12 md:py-24">
                                 <div className="mx-auto max-w-lg px-4 lg:px-8">
                                     <div className="mt-12">
@@ -24,7 +24,7 @@ const Checkout = () => {
                                                         />
 
                                                         <div className="ml-4">
-                                                            <p className="text-2xl font-bold" >{cr.name}</p>
+                                                            <p className="text-2xl font-bold text-black" >{cr.name}</p>
 
                                                             <dl className="mt-1 space-y-1 text-xs text-gray-500">
                                                                 <div>
@@ -41,7 +41,7 @@ const Checkout = () => {
                                                     </div>
 
                                                     <div>
-                                                        <p className="text-2xl">
+                                                        <p className="text-black text-2xl">
                                                             {cr.price}
                                                         </p>
                                                     </div>
