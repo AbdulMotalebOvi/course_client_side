@@ -21,11 +21,26 @@ const AppBar = ({ children }) => {
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
+                        <ul tabIndex={0} className=" menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
 
                             <li className='text-black font-bold'><Link to="/">Course</Link></li>
                             <li className='text-black font-bold'><Link to='/faq'>FAQ</Link></li>
                             <li className='text-black font-bold'><Link to='/blogs'>Blog</Link></li>
+                            <li className='m-auto'>
+                                <Link to='/profile' className='block mr-0 sm:mr-3 '>
+
+                                    {
+                                        user?.photoURL ?
+                                            <img src={user?.photoURL} alt=""
+                                                style={{ width: '40px', height: '40px', borderRadius: '20px' }}
+                                            />
+
+                                            :
+                                            <UserCircleIcon className="h-8 w-8 text-slate-500" />
+                                    }
+
+                                </Link>
+                            </li>
                             <li><div className='block  '>
                                 {
                                     user?.uid ?
@@ -39,12 +54,12 @@ const AppBar = ({ children }) => {
                                         <div className='flex sm:flex flex-col text-left'>
                                             <button className='mb-2 px-2 py-2 ml-4 rounded btn-primary text-white'>
                                                 <Link to='/login'>Log In</Link></button>
-
                                             <button className=' px-2 py-2 ml-4 rounded btn-primary text-white'><Link to='/signup'>Register</Link></button>
 
                                         </div>
                                 }
                             </div></li>
+
                         </ul>
                     </div>
                     <Link to='/' className="btn btn-ghost normal-case text-xl"> <span className='w-14 h-14 mx-2 text-black font-bold'><img src={logo} alt="" /></span>  Online Course</Link>
@@ -59,7 +74,7 @@ const AppBar = ({ children }) => {
                 </div>
 
                 <div className="navbar-end">
-                    <Link to='/profile' className='mr-3'>
+                    <Link to='/profile' className='hidden lg:block md:block mr-3 '>
 
                         {
                             user?.photoURL ?
