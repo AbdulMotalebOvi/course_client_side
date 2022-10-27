@@ -23,8 +23,8 @@ const AppBar = ({ children }) => {
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
 
                             <li><Link to="/">Course</Link></li>
-                            <li><Link>FAQ</Link></li>
-                            <li><Link>Blog</Link></li>
+                            <li><Link to='/faq'>FAQ</Link></li>
+                            <li><Link to='/blogs'>Blog</Link></li>
                             <li><div className='block  '>
                                 {
                                     user?.uid ?
@@ -50,10 +50,9 @@ const AppBar = ({ children }) => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0 uppercase">
-
                         <li><Link to="/">Course</Link></li>
-                        <li><Link>FAQ</Link></li>
-                        <li><Link>Blog</Link></li>
+                        <li><Link to='/faq'>FAQ</Link></li>
+                        <li><Link to='/blogs'>Blog</Link></li>
 
                     </ul>
                 </div>
