@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/UserContext';
 import { UserCircleIcon } from '@heroicons/react/24/solid'
+import logo from '../../images/logo.png';
 
 const AppBar = ({ children }) => {
     const [dark, setDark] = useState(false)
@@ -13,8 +14,8 @@ const AppBar = ({ children }) => {
             .catch(err => console.log(err))
     }
     return (
-        <div data-theme={dark ? 'dark' : 'light'} >
-            <div className="navbar bg-base-100 max-w-screen-xl	mx-auto">
+        <div data-theme={dark ? 'dark' : 'light'} className='bg-base-100 ' >
+            <div className="navbar max-w-screen-xl 	mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -46,7 +47,7 @@ const AppBar = ({ children }) => {
                             </div></li>
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-xl">Online Course</Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl"> <span className='w-14 h-14 mx-2'><img src={logo} alt="" /></span>  Online Course</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0 uppercase">

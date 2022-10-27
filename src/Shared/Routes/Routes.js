@@ -21,19 +21,19 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Courses></Courses>,
-                loader: () => fetch('http://localhost:5000/category')
+                loader: () => fetch('https://course-express-brightslife.vercel.app/category')
 
 
             },
             {
                 path: '/singleCourse/:id',
                 element: <PrivateRoutes><SIngleCourse></SIngleCourse></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course-category/${params.id}`)
+                loader: ({ params }) => fetch(`https://course-express-brightslife.vercel.app/course-category/${params.id}`)
             },
             {
                 path: '/checkout/:id',
                 element: <PrivateRoutes><Checkout></Checkout></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course-category/${params.id}`)
+                loader: ({ params }) => fetch(`https://course-express-brightslife.vercel.app/course-category/${params.id}`)
             },
             {
                 path: '/category',

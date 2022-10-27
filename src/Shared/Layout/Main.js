@@ -10,7 +10,7 @@ const Main = () => {
         <div>
             <AppBar>
 
-                <div className='divided max-w-screen-xl	mx-auto'>
+                <div className='divided  max-w-screen-xl	mx-auto'>
                     <div>
                         <Categories></Categories>
                     </div>

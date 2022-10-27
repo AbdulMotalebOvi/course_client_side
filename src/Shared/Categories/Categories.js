@@ -5,14 +5,13 @@ import Category from '../../Pages/Category/Category';
 const Categories = () => {
     const [category, setCategory] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/category')
+        fetch('https://course-express-brightslife.vercel.app/category')
             .then(res => res.json())
             .then(data => setCategory(data))
     }, [])
     return (
         <div className='text-[18px] font-semibold'>
-            <h1>All Categories : {category.length}</h1>
-            <div className='shadow'>
+            <div className='shadow mt-5'>
                 {
                     category?.map(ct => <Category
                         key={ct.id}
