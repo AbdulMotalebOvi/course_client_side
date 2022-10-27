@@ -23,9 +23,9 @@ const AppBar = ({ children }) => {
                         </label>
                         <ul tabIndex={0} className=" menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
 
-                            <li className='text-black font-bold'><Link to="/">Course</Link></li>
-                            <li className='text-black font-bold'><Link to='/faq'>FAQ</Link></li>
-                            <li className='text-black font-bold'><Link to='/blogs'>Blog</Link></li>
+                            <li className=' font-bold'><Link to="/">Course</Link></li>
+                            <li className=' font-bold'><Link to='/faq'>FAQ</Link></li>
+                            <li className=' font-bold'><Link to='/blogs'>Blog</Link></li>
                             <li className='m-auto'>
                                 <Link to='/profile' className='block mr-0 sm:mr-3 '>
 
@@ -66,9 +66,9 @@ const AppBar = ({ children }) => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal  p-0 uppercase">
-                        <li className='text-black font-bold'><Link to="/">Course</Link></li>
-                        <li className='text-black font-bold'><Link to='/faq'>FAQ</Link></li>
-                        <li className='text-black font-bold'><Link to='/blogs'>Blog</Link></li>
+                        <li className='font-bold'><Link to="/">Course</Link></li>
+                        <li className=' font-bold'><Link to='/faq'>FAQ</Link></li>
+                        <li className=' font-bold'><Link to='/blogs'>Blog</Link></li>
 
                     </ul>
                 </div>
