@@ -35,13 +35,13 @@ const SIngleCourse = () => {
                             </div>
 
                             <figure className="px-10 pt-10"><img src={single.image} alt="Album" /></figure>
-                            <div className="card-body">
-                                <h2 className="card-title">{single.name}</h2>
+                            <div className="card-body text-black font-semibold">
+                                <h2 className="card-title text-black">{single.name}</h2>
                                 <p className=''>{single.description}</p>
                                 <div className='mt-4'>
                                     <button
                                         onClick={() => addToCart(single)}
-                                        className="btn btn-active btn-primary">
+                                        className="btn btn-active btn-primary text-white">
                                         <Link to={`/checkout/${single.id}`}>Get Premium Access</Link></button>
                                 </div>
                             </div>
