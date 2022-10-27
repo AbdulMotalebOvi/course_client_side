@@ -28,7 +28,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/singleCourse/:id',
-                element: <PrivateRoutes><SIngleCourse></SIngleCourse></PrivateRoutes>,
+                element: <SIngleCourse></SIngleCourse>,
                 loader: ({ params }) => fetch(`https://course-express-brightslife.vercel.app/course-category/${params.id}`)
             },
             {
