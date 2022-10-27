@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { jsPDF } from "jspdf";
 import { useState } from 'react';
-// import logo from '../../../public/logo512.png'
+
 
 const SIngleCourse = () => {
     const singleCourses = useLoaderData()
