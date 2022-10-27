@@ -18,6 +18,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value
         signIn(email, password)
+
             .then((res) => {
                 const user = res.user
                 form.reset()
@@ -27,6 +28,7 @@ const Login = () => {
                 } else {
                     toast.error('Your email is not verified,PLease verify your email')
                 }
+
                 setPasswordErr('')
             })
             .catch((err) => {
@@ -35,6 +37,7 @@ const Login = () => {
             .finally(() => {
                 setLoading(false)
             })
+
 
     }
     return (
@@ -116,6 +119,7 @@ const Login = () => {
 
 
                         <button className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">  Sign in</button>
+
                         <p className='font-semibold text-red-500 text-[15px]'>{passErr}</p>
 
                         <div>

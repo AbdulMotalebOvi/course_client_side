@@ -5,6 +5,7 @@ import app from '../../Firebase/firebase.config';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
+
 export const AuthContext = createContext()
 const auth = getAuth(app)
 
@@ -35,6 +36,7 @@ const UserContext = ({ children }) => {
     const emailVerification = () => {
         return sendEmailVerification(auth.currentUser)
     }
+
     const signIn = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
@@ -61,7 +63,8 @@ const UserContext = ({ children }) => {
         loading,
         signIn,
         createUserByGoogle,
-        createUserGithub
+        createUserGithub,
+
     }
     return (
         <AuthContext.Provider value={authInfo}>
