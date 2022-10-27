@@ -40,6 +40,16 @@ const Login = () => {
 
 
     }
+    const handlerToCReateUserByGoogle = () => {
+        createUserByGoogle()
+            .then(() => { })
+
+    }
+    const handlerToCReateUserByGithub = () => {
+        createUserGithub()
+            .then(() => { })
+
+    }
     return (
         <div>
             <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
@@ -121,13 +131,12 @@ const Login = () => {
                         <button className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">  Sign in</button>
 
                         <p className='font-semibold text-red-500 text-[15px]'>{passErr}</p>
-
                         <div>
 
-                            <Link onClick={createUserByGoogle} className=" w-full rounded-lg  py-3 font-medium uppercase btn btn-outline btn-primary text-2xl text-black" to='/'><FaGoogle /></Link>
+                            <Link onClick={handlerToCReateUserByGoogle} className="w-full rounded-lg  py-3  font-medium text-black uppercase btn btn-outline text-2xl btn-primary" to='/'><FaGoogle /></Link>
                         </div>
                         <div>
-                            <Link onClick={createUserGithub} className=" w-full rounded-lg  py-3 text-2xl  font-medium text-black uppercase btn btn-outline btn-primary" to='/' ><FaGithub /></Link>
+                            <Link onClick={handlerToCReateUserByGithub} className=" w-full rounded-lg  py-3  font-medium text-black uppercase btn btn-outline text-2xl btn-primary" to='/' ><FaGithub /></Link>
                         </div>
 
                         <p className="text-center text-sm text-gray-500">

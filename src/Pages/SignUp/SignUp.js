@@ -10,6 +10,7 @@ const SignUp = () => {
     const { emailVerification, creteuseByMailAndPass, updateNameAndPhoto, createUserGithub, createUserByGoogle } = useContext(AuthContext)
 
     const [pass, setPassword] = useState('')
+    const [accepted, setAccepted] = useState(false)
     const navigate = useNavigate()
 
     const handlerToRegister = (event) => {
@@ -24,8 +25,8 @@ const SignUp = () => {
         creteuseByMailAndPass(email, password)
             .then(result => {
                 const user = result.user
-                updateNameAndPhoto(name, photoURL)
                 form.reset()
+                updateNameAndPhoto(name, photoURL)
                 verifiedEmail()
                 toast.success('Please Verify your Email')
                 navigate('/')
@@ -43,6 +44,19 @@ const SignUp = () => {
         }
         setPassword('')
 
+    }
+    const handlerToCReateUserByGoogle = () => {
+        createUserByGoogle()
+            .then(() => { })
+
+    }
+    const handlerToCReateUserByGithub = () => {
+        createUserGithub()
+            .then(() => { })
+
+    }
+    const handlerToCheck = event => {
+        setAccepted(event.target.checked);
     }
 
     return (
@@ -191,8 +205,9 @@ const SignUp = () => {
                     </div>
                     <p className='text-red-500 font-semibold'>{pass}</p>
 
+                    <p><input type="checkbox" onClick={handlerToCheck} placeholder='Accept Our terms & conditions' className='mx-2' />Accept our <Link to='/terms' className='text-blue-500 font-semibold'>Terms</Link> & Conditions </p>
                     <button
-
+                        disabled={!accepted}
                         type="submit"
                         className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
                     >
@@ -200,10 +215,10 @@ const SignUp = () => {
                     </button>
                     <div>
 
-                        <Link onClick={createUserByGoogle} className="w-full rounded-lg  py-3  font-medium text-black uppercase btn btn-outline text-2xl btn-primary" to='/'><FaGoogle /></Link>
+                        <Link onClick={handlerToCReateUserByGoogle} className="w-full rounded-lg  py-3  font-medium text-black uppercase btn btn-outline text-2xl btn-primary" to='/'><FaGoogle /></Link>
                     </div>
                     <div>
-                        <Link onClick={createUserGithub} className=" w-full rounded-lg  py-3  font-medium text-black uppercase btn btn-outline text-2xl btn-primary" to='/' ><FaGithub /></Link>
+                        <Link onClick={handlerToCReateUserByGithub} className=" w-full rounded-lg  py-3  font-medium text-black uppercase btn btn-outline text-2xl btn-primary" to='/' ><FaGithub /></Link>
                     </div>
 
 

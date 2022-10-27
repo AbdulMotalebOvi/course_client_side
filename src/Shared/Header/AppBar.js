@@ -62,7 +62,7 @@ const AppBar = ({ children }) => {
 
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-xl"> <span className='w-14 h-14 mx-2 text-black font-bold'><img src={logo} alt="" /></span>  Online Course</Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl"> <span className='w-14 h-14 mx-2 text-black font-bold'><img src={logo} alt="" /></span>  Online Education</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal  p-0 uppercase">

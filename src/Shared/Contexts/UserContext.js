@@ -27,12 +27,7 @@ const UserContext = ({ children }) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
-    const updateNameAndPhoto = (name, photoURL) => {
-        return updateProfile(auth.currentUser, {
-            displayName: name,
-            photoURL: photoURL,
-        })
-    }
+
     const emailVerification = () => {
         return sendEmailVerification(auth.currentUser)
     }
@@ -41,12 +36,20 @@ const UserContext = ({ children }) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
+    const updateNameAndPhoto = (name, photoURL) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photoURL,
+        })
+    }
     const logOut = () => {
+        setLoading(true)
         return signOut(auth)
     }
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            if (currentUser === null || currentUser.emailVerified) {
+            if (currentUser === null || currentUser?.emailVerified) {
                 setUser(currentUser)
             }
             setLoading(false)
@@ -56,11 +59,12 @@ const UserContext = ({ children }) => {
     }, [])
     const authInfo = {
         user,
+        loading,
         logOut,
+        setLoading,
         creteuseByMailAndPass,
         updateNameAndPhoto,
         emailVerification,
-        loading,
         signIn,
         createUserByGoogle,
         createUserGithub,

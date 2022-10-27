@@ -7,6 +7,7 @@ import Login from "../../Pages/LogIn/Login";
 import Profile from "../../Pages/Profile/Profile";
 import SignUp from "../../Pages/SignUp/SignUp";
 import SIngleCourse from "../../Pages/SingleCourse/SIngleCourse";
+import Terms from "../../Pages/Terms&Conditions/Terms";
 import Categories from "../Categories/Categories";
 import AppBar from "../Header/AppBar";
 import Main from "../Layout/Main";
@@ -58,6 +59,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/faq',
                 element: <Faq></Faq>
+            },
+            {
+                path: '/terms',
+                element: <Terms></Terms>
             }
 
         ]
