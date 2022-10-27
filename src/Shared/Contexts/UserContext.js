@@ -10,21 +10,20 @@ export const AuthContext = createContext()
 const auth = getAuth(app)
 
 const UserContext = ({ children }) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
 
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
     const createUserByGoogle = () => {
-        setLoading(true)
+
         return signInWithPopup(auth, googleProvider)
     }
     const createUserGithub = () => {
-        setLoading(true)
+
         return signInWithPopup(auth, githubProvider)
     }
     const creteuseByMailAndPass = (email, password) => {
-        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
@@ -33,7 +32,6 @@ const UserContext = ({ children }) => {
     }
 
     const signIn = (email, password) => {
-        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
     const updateNameAndPhoto = (name, photoURL) => {
@@ -42,21 +40,19 @@ const UserContext = ({ children }) => {
             photoURL: photoURL,
         })
     }
+    useEffect(() => {
+        const unsubsCribe = onAuthStateChanged(auth, (currentUser) => {
+            if (currentUser === null || currentUser.emailVerified) {
+                setUser(currentUser);
+            }
+
+            setLoading(false)
+        })
+        return () => { unsubsCribe() }
+    }, [])
     const logOut = () => {
-        setLoading(true)
         return signOut(auth)
     }
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            if (currentUser === null || currentUser.emailVerified) {
-                setUser(currentUser)
-            }
-            setLoading(false)
-
-        })
-        return () => { unsubscribe() }
-    }, [])
     const authInfo = {
         user,
         loading,

@@ -6,12 +6,12 @@ const PrivateRoutes = ({ children }) => {
     const location = useLocation()
     const { user, loading } = useContext(AuthContext)
     if (loading) {
-        return <progress className="m-auto progress w-24"></progress>
+        return <div><progress className="m-auto progress w-24"></progress></div>
     }
-    if (user && user?.uid) {
-        return children
+    else if (user && user?.uid) {
+        return children;
     }
-    return (<Navigate to='/login' state={{ from: location }} replace></Navigate >)
+    return <Navigate to='/login' state={{ from: location }} replace></Navigate>
 };
 
 export default PrivateRoutes;

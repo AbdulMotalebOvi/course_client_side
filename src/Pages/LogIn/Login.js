@@ -7,19 +7,21 @@ import { AuthContext } from '../../Shared/Contexts/UserContext';
 import toast from 'react-hot-toast';
 
 const Login = () => {
+    const { signIn, createUserByGoogle, createUserGithub, setLoading } = useContext(AuthContext)
     const [passErr, setPasswordErr] = useState('')
     const navigate = useNavigate()
     const location = useLocation()
-    const from = location.state?.from?.pathname || '/';
-    const { signIn, createUserByGoogle, createUserGithub, setLoading } = useContext(AuthContext)
+
+    const from = location.state?.from?.pathname || "/"
+
     const handlerToSIgnIn = (event) => {
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value
         signIn(email, password)
-            .then((res) => {
-                const user = res.user
+            .then((result) => {
+                const user = result.user
                 form.reset()
                 if (user.emailVerified) {
                     navigate(from, { replace: true })
@@ -42,11 +44,13 @@ const Login = () => {
     const handlerToCReateUserByGoogle = () => {
         createUserByGoogle()
             .then(() => { })
+            .catch(err => setPasswordErr(err.message))
 
     }
     const handlerToCReateUserByGithub = () => {
         createUserGithub()
             .then(() => { })
+            .catch(err => setPasswordErr(err.message))
 
     }
     return (
