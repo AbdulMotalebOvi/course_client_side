@@ -23,9 +23,9 @@ const AppBar = ({ children }) => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
 
-                            <li><Link to="/">Course</Link></li>
-                            <li><Link to='/faq'>FAQ</Link></li>
-                            <li><Link to='/blogs'>Blog</Link></li>
+                            <li className='text-black font-bold'><Link to="/">Course</Link></li>
+                            <li className='text-black font-bold'><Link to='/faq'>FAQ</Link></li>
+                            <li className='text-black font-bold'><Link to='/blogs'>Blog</Link></li>
                             <li><div className='block  '>
                                 {
                                     user?.uid ?
@@ -47,13 +47,13 @@ const AppBar = ({ children }) => {
                             </div></li>
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-xl"> <span className='w-14 h-14 mx-2'><img src={logo} alt="" /></span>  Online Course</Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl"> <span className='w-14 h-14 mx-2 text-black font-bold'><img src={logo} alt="" /></span>  Online Course</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal p-0 uppercase">
-                        <li><Link to="/">Course</Link></li>
-                        <li><Link to='/faq'>FAQ</Link></li>
-                        <li><Link to='/blogs'>Blog</Link></li>
+                    <ul className="menu menu-horizontal  p-0 uppercase">
+                        <li className='text-black font-bold'><Link to="/">Course</Link></li>
+                        <li className='text-black font-bold'><Link to='/faq'>FAQ</Link></li>
+                        <li className='text-black font-bold'><Link to='/blogs'>Blog</Link></li>
 
                     </ul>
                 </div>

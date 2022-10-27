@@ -22,12 +22,12 @@ const SIngleCourse = () => {
         doc.save('a.pdf')
     }
     return (
-        <div className='mt-16'>
+        <div className='mt-10'>
             {
                 singleCourses.map(single => {
                     return (
 
-                        <div className="card bg-zinc-50 shadow-xl">
+                        <div className="card bg-zinc-50 h-1/2 shadow-xl">
 
                             <div className='flex justify-between items-center px-5 bg-slate-200 py-4 border '>
                                 <div className='card-header font-medium px-4 text-black'>{single.name}</div>
